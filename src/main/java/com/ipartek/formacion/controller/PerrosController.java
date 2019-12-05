@@ -16,14 +16,14 @@ import com.ipartek.formacion.model.pojo.Perro;
  */
 @WebServlet("/perros")
 public class PerrosController extends HttpServlet {
-	
-	
+
+
 	private static final long serialVersionUID = 1L;
-	
+
     private ArrayList<Perro> perros = new ArrayList<Perro>();
-    
-   
-	
+
+
+
 
 	public PerrosController() {
 		super();
@@ -40,9 +40,9 @@ public class PerrosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//listar perros
-		
+
 		request.setAttribute("perros", perros);
-		request.getRequestDispatcher("perros.jsp").forward(request, response);
+		request.getRequestDispatcher("pages/perros.jsp").forward(request, response);
 	}
 
 	/**
@@ -51,21 +51,21 @@ public class PerrosController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//recibir datos del form
-		
+
 		String nombre = request.getParameter("nombre");
-		
-				
+
+
 		//crear perro
 		Perro p = new Perro();
 		p.setNombre(nombre);
-		
+
 		//guardar en lista
 		perros.add(p);
-		
+
 		//listar perros
 		request.setAttribute("perros", perros);
-		request.getRequestDispatcher("perros.jsp").forward(request, response);
-	
+		request.getRequestDispatcher("pages/perros.jsp").forward(request, response);
+
 	}
 
 }

@@ -13,6 +13,7 @@
 %>
 
 <a href="perros">CRUD Perros</a>
+<a href="login.jsp"> Login</a>
 
 
 <%@include file="includes/footer.jsp" %>

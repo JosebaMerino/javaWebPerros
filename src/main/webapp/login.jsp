@@ -1,3 +1,11 @@
+<%
+	String titulo = "index";
+%>
+
+
+<%@include file="includes/header.jsp" %>
+<%@include file="includes/navigation.jsp" %>
+
 <form action="login" method="post">
 	<input type="text"
 		name="nombre" id="nombre"
@@ -13,3 +21,5 @@
 	 <br />
 	 <button type="submit"> Enviar</button>
 </form>
+
+<%@include file="includes/footer.jsp" %>

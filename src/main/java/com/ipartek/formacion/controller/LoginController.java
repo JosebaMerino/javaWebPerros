@@ -53,7 +53,6 @@ public class LoginController extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String password = request.getParameter("password");
 
-
 		// Validar si es admin
 		boolean valido = NOMBRE.equals(nombre) && PASSWORD.equals(password);
 

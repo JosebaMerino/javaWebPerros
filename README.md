@@ -1,7 +1,5 @@
 # javaWebTemplate
 
-
-
 (para practicar le ponemos un formulario para hacerte login )
 
 (en la sesion guardamos esto)

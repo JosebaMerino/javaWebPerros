@@ -1,8 +1,3 @@
-<%
-	String titulo = "index";
-%>
-
-
 <%@include file="includes/header.jsp" %>
 <%@include file="includes/navigation.jsp" %>
 

@@ -1,6 +1,3 @@
-<%
-	String titulo = "Perros";
-%>
 <%@page import="com.ipartek.formacion.model.pojo.Perro"%>
 <%@page import="java.util.ArrayList"%>
 

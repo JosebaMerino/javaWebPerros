@@ -11,6 +11,8 @@
 		titulo = URL.substring(0, URL.length() - 4);
 	}
 
+	char primeraLetra = titulo.charAt(0);
+	titulo = Character.toUpperCase(primeraLetra) + titulo.substring(1);
 %>
 
 <!doctype html>
@@ -18,7 +20,7 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8" />
-	<title> Perros | <%=titulo %></title>
+	<title> PerrosWeb | <%=titulo %></title>
 
 <base href="/javaWebPerros/" />
 

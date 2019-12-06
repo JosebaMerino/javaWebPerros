@@ -7,8 +7,6 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.jsp">Index <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="perros">Perros</a>
-      <a class="nav-item nav-link" href="login.jsp"> Login </a>
-      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </div>
   </div>
   <span class="usuario">

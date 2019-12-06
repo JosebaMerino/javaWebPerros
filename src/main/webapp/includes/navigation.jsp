@@ -11,5 +11,17 @@
       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </div>
   </div>
+  <span class="usuario">
+<%
+	Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
+	if(usuarioSesion != null) { %>
+		<span> <img src="<%=usuarioSesion.getImagen() %>" alt="" height="20px" width="20px" /> </span>
+		<span> <a class="text-white" href="<%=usuarioSesion.getGithub() %>" target="_blank"> <%=usuarioSesion.getNombre() %></a> </span>
+		<a class="text-white" href="logout"> Logout</a>
+	<% } else { %>
+		<a class="text-white" href="login.jsp"> Login </a>
+	<% } %>
+</span>
 </nav>
+
 <main class="container">

@@ -1,0 +1,14 @@
+/* navbar */
+.navbar .usuario {
+	position: absolute;
+	right: 0;
+	top: 1rem;
+	margin-right: 0.5rem;
+}
+
+.navbar .navbar-toggler {
+	position: absolute;
+	left: calc(50%  - 28px);
+	top: 0.5rem;
+}
+

@@ -40,7 +40,12 @@ public class PerrosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//listar perros
+		String adoptar = request.getParameter("adoptar");
 
+		if(adoptar != null) {
+			int id = Integer.parseInt(request.getParameter("id"));
+			perros.removeIf( p -> p.getId() == id);
+		}
 		request.setAttribute("perros", perros);
 		request.getRequestDispatcher("pages/perros.jsp").forward(request, response);
 	}

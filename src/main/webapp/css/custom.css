@@ -16,3 +16,13 @@
 
 /* Clases
 ******************************************************************/
+
+.login input[type="text"] {
+	padding: 1.5rem;
+	border-radius: 2rem;
+}
+
+.login .btn {
+	padding: 0.75rem;
+	border-radius: 2rem;
+}

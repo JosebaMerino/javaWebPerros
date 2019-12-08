@@ -39,13 +39,13 @@
 					</tfoot>
 					<tbody>
 						<% for ( Perro p :  perros ){ %>
-						<tr>
-							<td><%=p.getId()%></td>
-							<td><%=p.getNombre()%></td>
-							<td><img src="<%=p.getFoto()%>" alt="" width="20px" height="20px" /></td>
-							<td><a href="perros?adoptar&id=<%=p.getId()%>"> Adoptar</a></td>
-						</tr>
-					<% } %>
+							<tr>
+								<td><%=p.getId()%></td>
+								<td><%=p.getNombre()%></td>
+								<td><img src="<%=p.getFoto()%>" alt="" width="20px" height="20px" /></td>
+								<td><a href="perros?adoptar&id=<%=p.getId()%>"> Adoptar</a></td>
+							</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>

@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.model.pojo.Usuario"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="index.jsp">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,6 +8,7 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href="index.jsp">Index <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="perros">Perros</a>
+      <a class="nav-item nav-link" href="perros2">Perros con JSTL</a>
     </div>
   </div>
   <span class="usuario">

@@ -25,7 +25,11 @@
 
 	<c:if test="${empty modificarPerro}">
 		<p>No tenemos perro para editar</p>
+		Vamos a inicializarlo.
+		<jsp:useBean id="modificarPerro" class="com.ipartek.formacion.model.pojo.Perro"></jsp:useBean>
 	</c:if>
+
+	<form action="post"></form>
 	${modificarPerro}
 
 

@@ -3,6 +3,7 @@ package com.ipartek.formacion.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,7 +62,8 @@ public class LoginController extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", usuario);
-			session.setMaxInactiveInterval(0);
+			session.setMaxInactiveInterval(5); // en segundos
+
 		} else {
 			vista = "login.jsp";
 		}

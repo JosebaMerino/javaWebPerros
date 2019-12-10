@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@page import="com.ipartek.formacion.model.pojo.Usuario"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="index.jsp">Navbar</a>
@@ -6,9 +10,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="index.jsp">Index <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="perros">Perros</a>
-      <a class="nav-item nav-link" href="perros2">Perros con JSTL</a>
+    	<a class="nav-item nav-link active" href="index.jsp">Index <span class="sr-only">(current)</span></a>
+    	<a class="nav-item nav-link" href="perros">Perros</a>
+      	<a class="nav-item nav-link" href="perros2">Perros con JSTL</a>
+		<span>
+			Usuarios conectados ${applicationScope.numeroUsuariosConectados}
+		</span>
     </div>
   </div>
   <span class="usuario">

@@ -20,16 +20,16 @@
     </div>
   </div>
   <span class="usuario">
-	<%
-		Usuario usuarioSesion = (Usuario) (session.getAttribute("usuario") == null ? new Usuario() : session.getAttribute("usuario"));
-		if( !"".equals(usuarioSesion.getNombre()) ) {
-	%>
-			<span> <img src="<%=usuarioSesion.getImagen() %>" alt="" height="20px" width="20px" /> </span>
-			<span> <a class="text-white" href="<%=usuarioSesion.getGithub() %>" target="_blank"> <%=usuarioSesion.getNombre() %></a> </span>
-			<a class="text-white" href="logout"> Logout</a>
-	<% 	} else { %>
-			<a class="text-white" href="login.jsp"> Login </a>
-	<% 	} %>
+	  	<c:choose>
+		  	<c:when test="${not empty usuario}">
+		 		<span> <img src="${usuario.getImagen()}" alt="" height="20px" width="20px" /> </span>
+				<span> <a class="text-white" href="${usuarioSesion.getGithub()}" target="_blank"> ${usuarioSesion.getNombre()}</a> </span>
+				<a class="text-white" href="logout"> Logout</a>
+		  	</c:when>
+		  	<c:otherwise>
+		  		<a class="text-white" href="login.jsp"> Login </a>
+		  	</c:otherwise>
+	  	</c:choose>
 	</span>
 </nav>
 

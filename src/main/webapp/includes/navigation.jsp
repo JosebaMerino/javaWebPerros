@@ -11,6 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
     	<a class="nav-item nav-link active" href="index.jsp">Index <span class="sr-only">(current)</span></a>
+    	<a class="nav-item nav-link" href="registro.jsp">Registrarse</a>
     	<a class="nav-item nav-link" href="perros">Perros</a>
       	<a class="nav-item nav-link" href="perros2">Perros con JSTL</a>
 		<span>

@@ -1,5 +1,8 @@
 package com.ipartek.formacion.listener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -8,6 +11,7 @@ import javax.servlet.annotation.WebListener;
 import org.apache.log4j.Logger;
 
 import com.ipartek.formacion.controller.PerrosController2;
+import com.ipartek.formacion.model.pojo.Usuario;
 
 /**
  * Application Lifecycle Listener implementation class AppListener
@@ -31,6 +35,14 @@ public class AppListener implements ServletContextListener {
     	//SC == applicationScope
     	ServletContext sc = sce.getServletContext();
     	sc.setAttribute("numeroUsuariosConectados", 0);
+
+    	List<Usuario> usuarios =new ArrayList<Usuario>();
+
+    	usuarios.add(new Usuario(1, "admin", "admin", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"));
+		usuarios.add(new Usuario(1, "pepe", "pepe", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"));
+		usuarios.add(new Usuario(1, "Joseba", "123456", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"));
+
+    	sc.setAttribute("usuarios", usuarios);
     }
 
     /**

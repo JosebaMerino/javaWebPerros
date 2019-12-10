@@ -19,22 +19,18 @@ import com.ipartek.formacion.model.pojo.Usuario;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet("/registrar")
+public class RegistrarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private final static Logger LOG = Logger.getLogger(PerrosController.class);
 
-	Usuario usuarios[] = {
-		new Usuario(1, "admin", "admin", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"),
-		new Usuario(1, "pepe", "pepe", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"),
-		new Usuario(1, "Joseba", "123456", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png")
-	};
+
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public RegistrarController() {
         super();
     }
 
@@ -54,9 +50,7 @@ public class LoginController extends HttpServlet {
 		String vista = "";
 
 		ServletContext sc = request.getServletContext();
-
 		List<Usuario> usuarios = (List<Usuario>) sc.getAttribute("usuarios");
-
 
 		// Recibir los datos del formulario
 		String nombre = request.getParameter("nombre");
@@ -76,7 +70,16 @@ public class LoginController extends HttpServlet {
 			}
 		}
 
-		valido = usuario.getPassword().equals(password);
+		if("".equals(usuario.getNombre())) {
+			usuario.setNombre(nombre);
+			usuario.setPassword(password);
+//			usuario.setGithub(github);
+//			usuario.setImagen(imagen);
+
+			usuarios.add(usuario);
+			sc.setAttribute("usuarios", usuarios);
+		}
+
 
 		LOG.debug("El usuario y la contraseña coinciden?" + valido);
 

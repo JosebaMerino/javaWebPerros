@@ -81,7 +81,7 @@ public class LoginController extends HttpServlet {
 		LOG.debug("El usuario y la contraseña coinciden?" + valido);
 
 		if(valido) {
-			vista = "index.jsp";
+			vista = "private/home";
 
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", usuario);

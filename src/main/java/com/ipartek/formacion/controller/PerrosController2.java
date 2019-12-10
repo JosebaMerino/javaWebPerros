@@ -69,7 +69,7 @@ public class PerrosController2 extends HttpServlet {
 
 		request.setAttribute("mensaje", mensaje);
 		request.setAttribute("perros", perros);
-		request.getRequestDispatcher("pages/perros-jstl.jsp").forward(request, response);
+		request.getRequestDispatcher("private/perros-jstl.jsp").forward(request, response);
 	}
 
 	/**

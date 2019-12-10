@@ -126,7 +126,7 @@ public class PerrosController2 extends HttpServlet {
 		LOG.trace("Doing post");
 
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id").trim());
 		String nombre = request.getParameter("nombre");
 		String imagen = request.getParameter("imagen");
 

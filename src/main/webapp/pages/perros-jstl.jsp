@@ -7,21 +7,17 @@
 
 <h2> Tenemos ${fn:length(perros)} perros en adopcion </h2>
 <main>
-
-	<c:if test="${not empty mensaje}">
+	<c:if test="">
 		<p>${mensaje}</p>
 	</c:if>
-	<c:if test="${empty mensaje}">
-		<p> No tienes ningun mensaje</p>
-	</c:if>
-	<ol>
+	<ul>
 		<c:forEach items="${perros}" var="p">
 			<li>${p.id} - ${p.nombre}
-			<img src="${p.foto}" alt="" />
+			<img src="${p.foto}" alt="" height="20px" width="20px" />
 			<a href="/javaWebPerros/perros2?accion=modificar&id=${p.id }"> Modificar</a>
 			</li>
 		</c:forEach>
-	</ol>
+	</ul>
 
 	<c:if test="${empty modificarPerro}">
 		<p>No tenemos perro para editar</p>
@@ -29,8 +25,15 @@
 		<jsp:useBean id="modificarPerro" class="com.ipartek.formacion.model.pojo.Perro"></jsp:useBean>
 	</c:if>
 
-	<form action="post"></form>
-	${modificarPerro}
+	<form action="perros2" method="post">
+		<input name="id" type="text" value="${modificarPerro.id} " />
+		<br />
+		<input name="nombre" type="text" value="${modificarPerro.nombre}" />
+		<br />
+		<input name="imagen" type="text" value="${modificarPerro.foto}" />
+		<br />
+		<button type="submit"> Enviar</button>
+	</form>
 
 
 </main>

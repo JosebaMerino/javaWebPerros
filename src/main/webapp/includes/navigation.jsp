@@ -20,8 +20,8 @@
   </div>
   <span class="usuario">
 	<%
-		Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
-		if(usuarioSesion != null) {
+		Usuario usuarioSesion = (Usuario) (session.getAttribute("usuario") == null ? new Usuario() : session.getAttribute("usuario"));
+		if( !"".equals(usuarioSesion.getNombre()) ) {
 	%>
 			<span> <img src="<%=usuarioSesion.getImagen() %>" alt="" height="20px" width="20px" /> </span>
 			<span> <a class="text-white" href="<%=usuarioSesion.getGithub() %>" target="_blank"> <%=usuarioSesion.getNombre() %></a> </span>

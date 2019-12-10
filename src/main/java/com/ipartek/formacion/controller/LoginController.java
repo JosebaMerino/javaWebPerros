@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.model.pojo.Usuario;
 
 /**
@@ -20,18 +22,22 @@ import com.ipartek.formacion.model.pojo.Usuario;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private final static Logger LOG = Logger.getLogger(PerrosController.class);
 
 	private static final String NOMBRE = "admin";
 	private static final String PASSWORD = "admin";
 
-	Usuario usuario;
+	Usuario usuarios[] = {
+		new Usuario(1, "admin", "admin", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"),
+		new Usuario(1, "pepe", "pepe", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"),
+		new Usuario(1, "Joseba", "123456", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png")
+	};
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public LoginController() {
         super();
-        usuario = new Usuario(1, "Joseba", "123456", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png");
     }
 
 	/**
@@ -55,14 +61,29 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 
 		// Validar si es admin
-		boolean valido = NOMBRE.equals(nombre) && PASSWORD.equals(password);
+		//boolean valido = NOMBRE.equals(nombre) && PASSWORD.equals(password);
+
+		boolean valido = false;
+		Usuario usuario = new Usuario();
+
+		LOG.debug("Buscando usuario "  + usuario + " ...");
+		for (Usuario u : usuarios) {
+			if (nombre.equals(u.getNombre())) {
+				usuario = u;
+				break;
+			}
+		}
+
+		valido = usuario.getPassword().equals(password);
+
+		LOG.debug("El usuario y la contraseña coinciden?" + valido);
 
 		if(valido) {
 			vista = "index.jsp";
 
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", usuario);
-			session.setMaxInactiveInterval(5); // en segundos
+			session.setMaxInactiveInterval(60); // en segundos
 
 		} else {
 			vista = "login.jsp";

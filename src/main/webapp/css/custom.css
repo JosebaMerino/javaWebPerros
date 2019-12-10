@@ -1,0 +1,28 @@
+/* Navbar (bootstrap)
+******************************************************************/
+.navbar .usuario {
+	position: absolute;
+	right: 0;
+	top: 1rem;
+	margin-right: 0.5rem;
+}
+
+.navbar .navbar-toggler {
+	position: absolute;
+	left: calc(50%  - 28px);
+	top: 0.5rem;
+}
+
+
+/* Clases
+******************************************************************/
+
+.login input[type="text"] {
+	padding: 1.5rem;
+	border-radius: 2rem;
+}
+
+.login .btn {
+	padding: 0.75rem;
+	border-radius: 2rem;
+}

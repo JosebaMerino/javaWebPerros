@@ -18,21 +18,21 @@ import com.mysql.jdbc.log.Log;
 /**
  * Servlet implementation class PerrosController
  */
-@WebServlet("/perros")
-public class PerrosController extends HttpServlet {
+@WebServlet("/perros2")
+public class PerrosController2 extends HttpServlet {
 
 
 	private static final long serialVersionUID = 1L;
 
 	private static int ID = 0;
-	private final static Logger LOG = Logger.getLogger(PerrosController.class);
+	private final static Logger LOG = Logger.getLogger(PerrosController2.class);
 
     private ArrayList<Perro> perros = new ArrayList<Perro>();
 
     String mensaje = "";
 
 
-	public PerrosController() {
+	public PerrosController2() {
 		super();
 	}
 
@@ -69,7 +69,7 @@ public class PerrosController extends HttpServlet {
 
 		request.setAttribute("mensaje", mensaje);
 		request.setAttribute("perros", perros);
-		request.getRequestDispatcher("pages/perros.jsp").forward(request, response);
+		request.getRequestDispatcher("pages/perros-jstl.jsp").forward(request, response);
 	}
 
 	/**

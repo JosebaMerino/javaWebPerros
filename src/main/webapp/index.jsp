@@ -1,18 +1,18 @@
-<%
-	String titulo = "index";
-%>
-
-
 <%@include file="includes/header.jsp" %>
 <%@include file="includes/navigation.jsp" %>
 
-<%
+<div class="row">
+	<div class="col">
+		<div class="card mt-3">
+			<div class="card-body">
+				<h3> Pantalla de inicio </h3>
+				<p>
+					En esta aplicacion se pueden gestionar perros.
 
-	out.print("<h1>Soy index.jsp</h1>");
-
-%>
-
-<a href="perros">CRUD Perros</a>
-
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
 
 <%@include file="includes/footer.jsp" %>

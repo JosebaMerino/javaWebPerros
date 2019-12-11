@@ -30,6 +30,8 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title> PerrosWeb | ${fn:substringBefore(url, '.jsp')}</title>
 
 <base href="${pageContext.request.contextPath}/" />

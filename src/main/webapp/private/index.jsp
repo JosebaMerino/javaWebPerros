@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@include file="/includes/header.jsp" %>
 <%@include file="/includes/navigation.jsp" %>
 
@@ -7,6 +11,24 @@
 ${atributoServlet}
 
 ${usuario.nombre}
+
+<c:if test="${'admin' eq usuario.nombre}">
+	Eres administrador
+	<p>
+		${numeroUsuariosConectados}
+	</p>
+	<p>
+		* Numero de accesos indebidos: ${numAccesosIndebidos}
+	</p>
+	<p>
+		IPS
+		<ul>
+			<c:forEach items="${IPs}"  var="ip">
+			<li> ${ip} </li>
+			</c:forEach>
+		</ul>
+	</p>
+</c:if>
 
 
 

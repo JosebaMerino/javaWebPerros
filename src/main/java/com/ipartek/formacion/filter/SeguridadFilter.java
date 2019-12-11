@@ -1,6 +1,8 @@
 package com.ipartek.formacion.filter;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -88,12 +90,15 @@ public class SeguridadFilter implements Filter {
 			LOG.warn("Intentan entrar sin logearse, vamos a pillar sus datos por si acaso");
 
 			int numAccesosIndebidos = (int) sc.getAttribute("numAccesosIndebidos");
+
 			Set<String> IPs = (Set<String>) sc.getAttribute("IPs");
 
 			IPs.add(req.getRemoteAddr());
 
 			sc.setAttribute("numAccesosIndebidos", ++numAccesosIndebidos);
 			sc.setAttribute("IPs", IPs);
+
+			res.sendRedirect("/login.jsp" );
 		} else {
 			chain.doFilter(request, response);
 		}

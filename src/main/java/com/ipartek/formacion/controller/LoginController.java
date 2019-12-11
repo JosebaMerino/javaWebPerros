@@ -50,6 +50,11 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Variables del controlador
+
+
+		// Provocar un error
+		// int infinito = 5 / 0;
+
 		String base = "/";
 		String vista = "";
 
@@ -87,13 +92,16 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("usuario", usuario);
 			session.setMaxInactiveInterval(60); // en segundos
 
+			String basee = request.getContextPath();
+			response.sendRedirect(basee + "/private/home");
+
 		} else {
 			vista = "login.jsp";
+			request.getRequestDispatcher(base + vista).forward(request, response);
 		}
 
 
 		// Llevar a la vista
-		request.getRequestDispatcher(base + vista).forward(request, response);
 
 	}
 

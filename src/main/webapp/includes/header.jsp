@@ -32,7 +32,7 @@
 	<meta charset="UTF-8" />
 	<title> PerrosWeb | ${fn:substringBefore(url, '.jsp')}</title>
 
-<base href="/javaWebPerros/" />
+<base href="${pageContext.request.contextPath}/" />
 
 <link rel="stylesheet" href="css/bootstrap.css">
 

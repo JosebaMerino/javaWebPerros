@@ -39,7 +39,9 @@ public class BackofficeController extends HttpServlet {
 
 	private void doit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.sendRedirect("/javaWebPerros/perros");
+		request.setAttribute("atributoServlet", 23);
+
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 

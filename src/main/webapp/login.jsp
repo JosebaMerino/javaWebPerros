@@ -1,6 +1,19 @@
+<!-- Indica en caso de error cual es la pagina a la que tiene que redirigir -->
+<%@ page errorPage="error.jsp" %>
+
 <%@include file="includes/header.jsp" %>
 <%@include file="includes/navigation.jsp" %>
 
+
+${ param.mensaje }
+
+<%
+	// Descomentar estas lineas para que lance un error
+
+	// Object o = null;
+	// o.toString();
+
+%>
 
 <div class="row justify-content-center">
 	<div class="col-12 col-md-8 col-lg-6">

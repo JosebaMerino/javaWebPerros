@@ -9,9 +9,9 @@ ${ param.mensaje }
 
 <%
 	// Descomentar estas lineas para que lance un error
-
-	// Object o = null;
-	// o.toString();
+/*
+	Object o = null;
+	o.toString(); */
 
 %>
 

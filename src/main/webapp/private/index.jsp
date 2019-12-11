@@ -6,4 +6,8 @@
 
 ${atributoServlet}
 
+${usuario.nombre}
+
+
+
 <%@include file="/includes/footer.jsp" %>

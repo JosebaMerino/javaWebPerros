@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 
 
 		// Provocar un error
-		// int infinito = 5 / 0;
+//		 int infinito = 5 / 0;
 
 		String base = "/";
 		String vista = "";

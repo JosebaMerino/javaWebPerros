@@ -1,12 +1,15 @@
 package com.ipartek.formacion.filter;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -59,6 +62,8 @@ public class SeguridadFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
+		ServletContext sc = req.getServletContext();
+
 		LOG.debug("RequestURL" + req.getRequestURL());
 		LOG.debug("RequestURI" + req.getRequestURI());
 		LOG.debug("HTTP Protocol" + req.getProtocol());
@@ -80,7 +85,15 @@ public class SeguridadFilter implements Filter {
 
 
 		if (session.getAttribute("usuario") == null) {
-			LOG.warn("Intentan entrar sin logearse");
+			LOG.warn("Intentan entrar sin logearse, vamos a pillar sus datos por si acaso");
+
+			int numAccesosIndebidos = (int) sc.getAttribute("numAccesosIndebidos");
+			Set<String> IPs = (Set<String>) sc.getAttribute("IPs");
+
+			IPs.add(req.getRemoteAddr());
+
+			sc.setAttribute("numAccesosIndebidos", ++numAccesosIndebidos);
+			sc.setAttribute("IPs", IPs);
 		} else {
 			chain.doFilter(request, response);
 		}
@@ -95,7 +108,16 @@ public class SeguridadFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		LOG.trace("init");
+		LOG.debug("inicializando valores de numAcesosIndebidos y IPs");
 		// TODO Auto-generated method stub
+		ServletContext sc =  fConfig.getServletContext();
+
+		int numAccesosIndebidos = 0;
+		Set<String> IPs = new HashSet<String>();
+
+		sc.setAttribute("numAccesosIndebidos", numAccesosIndebidos);
+		sc.setAttribute("IPs", IPs);
+
 	}
 
 }

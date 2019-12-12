@@ -85,7 +85,8 @@ public class FormularioController extends HttpServlet {
 				}
 			}
 
-            request.setAttribute("deportes", listaDeportes.toArray());
+
+        request.setAttribute("deportes", listaDeportes.toArray());
 
 
             vista = "index.jsp";

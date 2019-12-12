@@ -1,6 +1,7 @@
 package com.ipartek.formacion.listener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -43,6 +44,16 @@ public class AppListener implements ServletContextListener {
 		usuarios.add(new Usuario(1, "Joseba", "123456", "https://github.com/JosebaMerino/", "/javaWebPerros/images/user.png"));
 
     	sc.setAttribute("usuarios", usuarios);
+
+    	HashMap<String, String> deportes = new HashMap<String,String>();
+
+    	deportes.put("1", "Surf");
+    	deportes.put("110", "Tennis");
+    	deportes.put("1010", "Baloncesto");
+    	deportes.put("10", "Futbol");
+
+    	sc.setAttribute("formDeportes", deportes);
+
     }
 
     /**

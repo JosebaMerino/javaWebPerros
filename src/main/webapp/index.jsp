@@ -9,6 +9,9 @@
 				<p>
 					En esta aplicacion se pueden gestionar perros.
 
+					${nombre}
+					${email}
+					${deportes}
 				</p>
 			</div>
 		</div>

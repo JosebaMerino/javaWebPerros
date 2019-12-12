@@ -37,8 +37,8 @@ import com.ipartek.formacion.controller.PerrosController;
 					, urlPatterns = { "/private/*" })
 public class SeguridadFilter implements Filter {
 
-
 	private final static Logger LOG = Logger.getLogger(SeguridadFilter.class);
+
 
     /**
      * Default constructor.
@@ -48,10 +48,20 @@ public class SeguridadFilter implements Filter {
     }
 
 	/**
-	 * @see Filter#destroy()
+	 * @see Filter#init(FilterConfig)
 	 */
-	public void destroy() {
+	public void init(FilterConfig fConfig) throws ServletException {
+		LOG.trace("init");
+		LOG.debug("inicializando valores de numAcesosIndebidos y IPs");
 		// TODO Auto-generated method stub
+		ServletContext sc =  fConfig.getServletContext();
+
+		int numAccesosIndebidos = 0;
+		Set<String> IPs = new HashSet<String>();
+
+		sc.setAttribute("numAccesosIndebidos", numAccesosIndebidos);
+		sc.setAttribute("IPs", IPs);
+
 	}
 
 	/**
@@ -109,20 +119,10 @@ public class SeguridadFilter implements Filter {
 	}
 
 	/**
-	 * @see Filter#init(FilterConfig)
+	 * @see Filter#destroy()
 	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		LOG.trace("init");
-		LOG.debug("inicializando valores de numAcesosIndebidos y IPs");
-		// TODO Auto-generated method stub
-		ServletContext sc =  fConfig.getServletContext();
-
-		int numAccesosIndebidos = 0;
-		Set<String> IPs = new HashSet<String>();
-
-		sc.setAttribute("numAccesosIndebidos", numAccesosIndebidos);
-		sc.setAttribute("IPs", IPs);
+	public void destroy() {
+		LOG.trace("Destroy");
 
 	}
-
 }

@@ -14,6 +14,7 @@
     	<a class="nav-item nav-link" href="registro.jsp">Registrarse</a>
     	<a class="nav-item nav-link" href="perros">Perros</a>
       	<a class="nav-item nav-link" href="perros2">Perros con JSTL</a>
+      	<a class="nav-item nav-link" href="formulario.jsp">Formulario de deportes</a>
 		<span>
 			Usuarios conectados ${applicationScope.numeroUsuariosConectados}
 		</span>

@@ -11,24 +11,26 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
     	<a class="nav-item nav-link active" href="index.jsp">Index <span class="sr-only">(current)</span></a>
+    	<a class="nav-item nav-link" href="registro.jsp">Registrarse</a>
     	<a class="nav-item nav-link" href="perros">Perros</a>
       	<a class="nav-item nav-link" href="perros2">Perros con JSTL</a>
+      	<a class="nav-item nav-link" href="formulario.jsp">Formulario de deportes</a>
 		<span>
 			Usuarios conectados ${applicationScope.numeroUsuariosConectados}
 		</span>
     </div>
   </div>
   <span class="usuario">
-	<%
-		Usuario usuarioSesion = (Usuario) session.getAttribute("usuario");
-		if(usuarioSesion != null) {
-	%>
-			<span> <img src="<%=usuarioSesion.getImagen() %>" alt="" height="20px" width="20px" /> </span>
-			<span> <a class="text-white" href="<%=usuarioSesion.getGithub() %>" target="_blank"> <%=usuarioSesion.getNombre() %></a> </span>
-			<a class="text-white" href="logout"> Logout</a>
-	<% 	} else { %>
-			<a class="text-white" href="login.jsp"> Login </a>
-	<% 	} %>
+	  	<c:choose>
+		  	<c:when test="${not empty usuario}">
+		 		<span> <img src="${usuario.getImagen()}" alt="" height="20px" width="20px" /> </span>
+				<span> <a class="text-white" href="${usuarioSesion.getGithub()}" target="_blank"> ${usuarioSesion.getNombre()}</a> </span>
+				<a class="text-white" href="logout"> Logout</a>
+		  	</c:when>
+		  	<c:otherwise>
+		  		<a class="text-white" href="login.jsp"> Login </a>
+		  	</c:otherwise>
+	  	</c:choose>
 	</span>
 </nav>
 

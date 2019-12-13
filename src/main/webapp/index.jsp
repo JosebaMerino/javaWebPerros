@@ -1,6 +1,8 @@
 <%@include file="includes/header.jsp" %>
 <%@include file="includes/navigation.jsp" %>
 
+<h2>Branch modelo</h2>
+
 <div class="row">
 	<div class="col">
 		<div class="card mt-3">
@@ -9,6 +11,9 @@
 				<p>
 					En esta aplicacion se pueden gestionar perros.
 
+					${nombre}
+					${email}
+					${deportes}
 				</p>
 			</div>
 		</div>

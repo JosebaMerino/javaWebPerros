@@ -27,7 +27,7 @@
 						</c:forEach>
 					</div>
 				</c:if>
-				<form action="formulario" method="get" class="login">
+				<form action="formulario" method="post" class="login">
 					<div class="form-group">
 						<input type="text"
 							name="nombre" id="nombre"

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.ipartek.formacion.model.ArrayPerroDAO;
 import com.ipartek.formacion.model.pojo.Perro;
 import com.mysql.jdbc.log.Log;
 
@@ -24,10 +25,10 @@ public class PerrosController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static int ID = 0;
 	private final static Logger LOG = Logger.getLogger(PerrosController.class);
 
-    private ArrayList<Perro> perros = new ArrayList<Perro>();
+	private static ArrayPerroDAO dao = ArrayPerroDAO.getInstance();
+
 
     String mensaje = "";
 
@@ -40,12 +41,15 @@ public class PerrosController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		LOG.trace("Se ejecuta la primera vez que se entra y nunca mas");
 		super.init(config);
-		perros.add( new Perro(1,"bubba") );
-		perros.add( new Perro(2,"rataplan") );
-		perros.add( new Perro(3,"mosca") );
-		perros.add( new Perro(4,"txakur") );
-		perros.add( new Perro(5,"lagun") );
-		ID = 6;
+		try {
+			dao.create( new Perro(1,"bubba") );
+			dao.create( new Perro(2,"rataplan") );
+			dao.create( new Perro(3,"mosca") );
+			dao.create( new Perro(4,"txakur") );
+			dao.create( new Perro(5,"lagun") );
+		} catch (Exception e) {
+			LOG.warn(e);
+		}
 	}
 
 	@Override
@@ -54,7 +58,6 @@ public class PerrosController extends HttpServlet {
 		LOG.trace("Se ejecuta al parar el servidor Tomcat");
 
 		super.destroy();
-		perros = null;
 	}
 
 	@Override
@@ -68,7 +71,7 @@ public class PerrosController extends HttpServlet {
 		LOG.trace("Se ejecuta despues de doGet o doPost");
 
 		request.setAttribute("mensaje", mensaje);
-		request.setAttribute("perros", perros);
+		request.setAttribute("perros", dao.getAll());
 		request.getRequestDispatcher("private/perros.jsp").forward(request, response);
 	}
 
@@ -84,28 +87,19 @@ public class PerrosController extends HttpServlet {
 
 		if("adoptar".equals(accion)) {
 			LOG.trace("Doing get -> Adoptar");
-			Perro perro = null;
 			int id = Integer.parseInt(request.getParameter("id"));
 
-			for( Perro p : perros) {
-				if (p.getId() == id) {
-					perro = p;
-					break;
-				}
-			}
+			try {
+			Perro perro = dao.delete(id);
+
 			LOG.trace("Adoptado perro: " + perro);
-			perros.removeIf( p -> p.getId() == id);
+			} catch (Exception e) {
+				mensaje = "No se ha podido adoptar al perro";
+			}
 		} else if("modificar".equals(accion)) {
 			LOG.trace("Doing get -> Modificar");
-			Perro perro = new Perro();
 			int id = Integer.parseInt(request.getParameter("id"));
-
-			for( Perro p : perros) {
-				if (p.getId() == id) {
-					perro = p;
-					break;
-				}
-			}
+			Perro perro = dao.getById(id);
 
 			request.setAttribute("modificarPerro", perro);
 		} else {
@@ -135,30 +129,34 @@ public class PerrosController extends HttpServlet {
 		if (id > 0) {
 			// modificar perro
 			LOG.trace("Doing post -> Modificar");
-			for (Perro p : perros) {
-				if (p.getId() == id) {
-					perro = p;
-					break;
-				}
-			}
+			perro = dao.getById(id);
+
 			perro.setNombre(nombre);
 			perro.setFoto(imagen);
+
+			try {
+				dao.update(id, perro);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				LOG.warn("No se ha podido actualizar el perro");
+			}
 
 			LOG.trace("Modificado perro:" + perro);
 
 		} else {
 			LOG.trace("Doing post -> Crear");
 
-			//crear perro
-			perro.setId(ID);
-			ID++;
-
 			perro.setNombre(nombre);
 			perro.setFoto(imagen);
 			mensaje = "Gracias por dar de alta un nuevo perro";
 
 			//guardar en lista
-			perros.add(perro);
+			try {
+				dao.create(perro);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				LOG.warn("No se ha podido crear el perro");
+			}
 			LOG.trace("Perro dado de alta: " + perro);
 		}
 

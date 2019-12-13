@@ -18,6 +18,7 @@ public class ArrayProductosDAOTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		mock = new Producto(1, "Patatas", 2, "", "nipa", 2);
+		dao.create(mock);
 	}
 
 	@AfterClass
@@ -33,37 +34,59 @@ public class ArrayProductosDAOTest {
 	}
 
 	@Test
-	public void testGetAll() {
-		fail("Not yet implemented");
+	public void testGetAll() throws Exception {
+		int size = dao.getAll().size();
+		Producto prod = new Producto(1, "Patatas", 2, "", "nipa", 2);
+		dao.create(prod);
+
+		assertTrue("No se ha añadido correctamente", dao.getAll().size() == (size + 1));
+
+		dao.delete(prod.getId());
 	}
 
 	@Test
-	public void testGetById() {
-		//dao.get
+	public void testGetById() throws Exception {
+
+		Producto prod = dao.getById(mock.getId());
+		assertSame("Los productos no son iguales", prod, mock);
+
 	}
 
 	@Test
 	public void testDelete() throws Exception {
 		int size = dao.getAll().size();
-		dao.create(mock);
+		Producto prod = new Producto(1, "Patatas", 2, "", "nipa", 2);
+		dao.create(prod);
+
+
 		assertTrue("No se ha añadido correctamente", dao.getAll().size() == (size + 1));
-		dao.delete(mock.getId());
+		dao.delete(prod.getId());
 		assertTrue("No se ha borrado correctamente", dao.getAll().size() == size);
+		assertNull(dao.getById(prod.getId()));
 
 	}
 
 	@Test
-	public void testUpdate() {
-		fail("Not yet implemented");
+	public void testUpdate() throws Exception {
+		Producto prod = dao.getById(mock.getId());
+		prod.setNombre("Debo estar cambiado");
+
+		Producto updated = dao.update(prod.getId(), prod);
+
+		assertSame(updated, prod);
+
 	}
 
 	@Test
 	public void testCreate() throws Exception {
 		int size = dao.getAll().size();
 
-		dao.create(mock);
+		Producto prod = new Producto(1, "Patatas", 2, "", "nipa", 2);
 
+		dao.create(prod);
 		assertTrue("No se ha añadido correctamente", dao.getAll().size() == (size + 1));
+
+		dao.delete(prod.getId());
 	}
 
 }

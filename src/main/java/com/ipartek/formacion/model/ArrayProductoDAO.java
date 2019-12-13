@@ -97,4 +97,11 @@ public class ArrayProductoDAO implements IDAO<Producto> {
 		return resul;
 	}
 
+	@Override
+	public String toString() {
+		return "ArrayProductoDAO [registros=" + registros + "]";
+	}
+
+
+
 }

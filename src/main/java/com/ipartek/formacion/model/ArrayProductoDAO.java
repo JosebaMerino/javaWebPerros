@@ -87,7 +87,7 @@ public class ArrayProductoDAO implements IDAO<Producto> {
 		Producto resul = null;
 
 		if (pojo != null) {
-			pojo.setId(++indice);
+			pojo.setId(indice++);
 			registros.add(pojo);
 			resul = pojo;
 		} else {

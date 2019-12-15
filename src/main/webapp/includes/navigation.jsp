@@ -17,9 +17,6 @@
       	<a class="nav-item nav-link" href="formulario.jsp">Formulario de deportes</a>
       	<a class="nav-item nav-link" href="producto">Productos</a>
       	<a class="nav-item nav-link" href="productos/formulario.jsp">Productos formulario</a>
-		<span>
-			Usuarios conectados ${applicationScope.numeroUsuariosConectados}
-		</span>
     </div>
   </div>
   <span class="usuario">
@@ -35,5 +32,11 @@
 	  	</c:choose>
 	</span>
 </nav>
+
+		<span class="conectados">
+		<c:set var="conectados" value="${applicationScope.numeroUsuariosConectados}"></c:set>
+ 		<span class="${(conectados > 0)? 'led' : 'led-off'}"></span>
+			Usuarios conectados ${applicationScope.numeroUsuariosConectados}
+		</span>
 
 <main class="container">

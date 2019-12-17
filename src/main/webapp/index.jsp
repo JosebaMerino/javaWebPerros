@@ -12,7 +12,7 @@
 
 %>
 
-<a href="perros">CRUD Perros</a>
+<a href="items">CRUD Perros</a>
 
 
 <%@include file="includes/footer.jsp" %>
